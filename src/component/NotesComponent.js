@@ -1,14 +1,18 @@
-import PrintNote from "./printNote"
+import PrintNoteData from "./PrintNoteData"
 import React from 'react'
 import { withCookies } from 'react-cookie';
 
-const NotesComponent = (props) =>{
 
+const NotesComponent = (props) =>{
+    
     return(
         <div>
-            {props.notesData.forEach(
+            {props.notesData.map(
                 (data)=>{
-                    <PrintNote noteData={data}/>
+                    return(
+                        <PrintNoteData noteData={data}/>
+                        
+                    )
                 }
             )}
           
