@@ -1,0 +1,12 @@
+
+.page{
+    background-color:#CFA66F;
+}
+.contents{
+    background-color:#E3D3C1;
+    min-height:100vh;
+}
+.footer{
+    background-color:#0D0D0D;
+    color:white;
+}
