@@ -1,0 +1,9 @@
+.titlearea{
+    margin: 20px 50px;
+}
+.title{
+    display:inline;
+}
+.newNote{
+    float: right;
+}
