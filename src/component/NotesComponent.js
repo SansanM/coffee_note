@@ -7,11 +7,14 @@ const NotesComponent = (props) =>{
     
     return(
         <div>
+            <h2>My Note</h2>
             {props.notesData.map(
                 (data)=>{
                     return(
-                        <PrintNoteData noteData={data}/>
-                        
+                        <React.Fragment>
+                            
+                            <PrintNoteData noteData={data}/>
+                        </React.Fragment>
                     )
                 }
             )}
