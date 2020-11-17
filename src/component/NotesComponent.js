@@ -21,7 +21,7 @@ const NotesComponent = (props) => {
             {props.notesData.map(
                 (data) => {
                     return (
-                        <PrintNoteData noteData={data} key={data.uuid} />
+                        <PrintNoteData noteData={data} key={data.uuid} setNote={props.setNote}/>
                     )
                 }
             )}

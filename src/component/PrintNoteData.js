@@ -1,16 +1,19 @@
 import React from 'react'
 import { withCookies } from 'react-cookie';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
+
+import NoteDetail from '../NoteDetail';
 
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
-        margin:30
+        margin: 30
     },
     bullet: {
         display: 'inline-block',
@@ -29,18 +32,18 @@ const PrintNoteData = (props) => {
     const year = props.noteData.updated_at.substring(0, 4);
     const month = props.noteData.updated_at.substring(5, 7);
     const day = props.noteData.updated_at.substring(8, 10);
-    const hour = props.noteData.updated_at.substring(11, 13);
-    const min = props.noteData.updated_at.substring(14, 16);
-    const sec = props.noteData.updated_at.substring(17, 19);
+    
+    //<Link to={"/NoteDetail/"+String(props.noteData.uuid)}>詳しく見る</Link>
+
 
     const classes = useStyles();
     return (
-        <div>
+        <React.Fragment>
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
                         {props.noteData.title}
-                     </Typography>
+                    </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                         {year}年{month}月{day}日
                    </Typography>
@@ -51,10 +54,10 @@ const PrintNoteData = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">詳しく見る</Button>
+                    <NoteDetail uuid={props.noteData.uuid} setNote={props.setNote}/>
                 </CardActions>
             </Card>
-        </div>
+        </React.Fragment>
     )
 }
 

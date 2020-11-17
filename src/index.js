@@ -9,14 +9,12 @@ import Home from "./Home";
 import Login from "./Login";
 import NoteDetail from "./NoteDetail";
 import AddNote from "./AddNote";
-
 import IsLogin from "./component/isLogin";
 import IsLogout from "./component/isLogout";
 
 const LoginOnly = (props) =>{
   return(
     <React.Fragment>
-      <Route path="/NoteDetail" render={() => <NoteDetail />}/>
       <Route path="/AddNote" render={() => <AddNote />}/>
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/Home" render={() => <Home />} />

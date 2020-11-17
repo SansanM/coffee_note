@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { withCookies } from 'react-cookie';
 import Notes from "./component/NotesComponent"
 
+
 const Home = (props) => {
     const [myNoteData, setMyNoteData] = useState([])
 
@@ -16,7 +17,6 @@ const Home = (props) => {
             }
         })
             .then(res => {
-                console.log(res.data)
                 setMyNoteData(res.data)
             })
             .catch(error => {
@@ -26,7 +26,7 @@ const Home = (props) => {
 
     return (
         <div>
-            <Notes notesData={myNoteData} />
+            <Notes notesData={myNoteData} setNote={setMyNoteData}/>
         </div>
     )
 }
