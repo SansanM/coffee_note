@@ -33,7 +33,7 @@ const AddNote = (props) => {
 
         const token = props.cookies.get('coffeeNote-token');
         const url = "http://127.0.0.1:8000/note/note/";
-        
+
         let form_data = new FormData();
         form_data.append('title', title);
         form_data.append('body', note);
@@ -52,11 +52,7 @@ const AddNote = (props) => {
             window.location.href = "/";
         })
         .catch( e =>{console.log(e)})
-
     } 
-
-
-
 
     return (
         <div>
@@ -79,6 +75,7 @@ const AddNote = (props) => {
                     onChange={(e) => setSanmi(e.target.value)}
                     value={sanmi}
                     type="number"
+                    inputProps={{min: 0 , max:5}} 
                     label="酸味"
                     variant="outlined"
                 /><br />
@@ -86,6 +83,7 @@ const AddNote = (props) => {
                     onChange={(e) => setNigami(e.target.value)}
                     value={nigami}
                     type="number"
+                    inputProps={{min: 0 , max:5}} 
                     label="苦味"
                     variant="outlined"
                 /><br />
@@ -93,6 +91,7 @@ const AddNote = (props) => {
                     onChange={(e) => setLike(e.target.value)}
                     value={like}
                     type="number"
+                    inputProps={{min: 0 , max:5}} 
                     label="評価"
                     variant="outlined"
                 /><br />

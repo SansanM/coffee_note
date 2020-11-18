@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./Home";
 import Login from "./Login";
-import NoteDetail from "./NoteDetail";
 import AddNote from "./AddNote";
 import IsLogin from "./component/isLogin";
 import IsLogout from "./component/isLogout";
