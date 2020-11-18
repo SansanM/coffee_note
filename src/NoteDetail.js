@@ -9,11 +9,11 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, B
 const NoteDetail = (props) => {
     const uuid = props.uuid
     const [data, setData] = useState([])
-    const url = "http://127.0.0.1:8000/note/note/" + uuid
+    const url = "https://coffeenoteapi.sankawa.site/note/note/" + uuid
     const token = props.cookies.get('coffeeNote-token');
 
     const getList = (props) => {
-        const url = "http://127.0.0.1:8000/note/note";
+        const url = "https://coffeenoteapi.sankawa.site/note/note";
         const token = props.cookies.get('coffeeNote-token');
         Axios.get(url, {
             headers: {

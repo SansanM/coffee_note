@@ -32,7 +32,7 @@ const AddNote = (props) => {
     const NotePost = () =>{
 
         const token = props.cookies.get('coffeeNote-token');
-        const url = "http://127.0.0.1:8000/note/note/";
+        const url = "https://coffeenoteapi.sankawa.site/note/note/";
 
         let form_data = new FormData();
         form_data.append('title', title);

@@ -9,7 +9,7 @@ const IsLogin = (props) => {
         let form_data = new FormData();
         form_data.append('token', props.cookies.get('coffeeNote-token'));
         
-        const url = "http://127.0.0.1:8000/api/token/verify/"
+        const url = "https://coffeenoteapi.sankawa.site/api/token/verify/"
         Axios.post(url, form_data, {
             headers: {
                 'content-type': 'multipart/form-data'

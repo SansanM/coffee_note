@@ -25,7 +25,7 @@ const Auth = (props) => {
         form_data.append('username', userName);
         form_data.append('password', password);
        
-        const url = isLogin?"http://127.0.0.1:8000/api/token/":"http://127.0.0.1:8000/note/users/"
+        const url = isLogin?"https://coffeenoteapi.sankawa.site/api/token/":"https://coffeenoteapi.sankawa.site/note/users/"
         axios.post(url, form_data, {
             headers: {
                 'Content-Type': 'application/json'
@@ -36,9 +36,10 @@ const Auth = (props) => {
             window.location.href = "/";
         })
         .catch( error => {
-          setErrorMessage(error.response.data)
-          setUserName("");
-          setPassword("");
+        setUserName("");
+        setPassword("");
+        setErrorMessage(error.response.data)
+          
         });
     }
 
