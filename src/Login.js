@@ -30,6 +30,8 @@ const Auth = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            mode: 'cors', 
+            credentials: 'include'
         })
         .then( res => {
             props.cookies.set('coffeeNote-token', res.data.token);
