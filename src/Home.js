@@ -9,7 +9,7 @@ const Home = (props) => {
 
 
     useEffect(() => {
-        const url = "https://coffeenoteapi.sankawa.site/note/note";
+        const url = "https://coffeenoteapi.sankawa.site/note/note/";
         const token = props.cookies.get('coffeeNote-token');
         Axios.get(url, {
             headers: {
