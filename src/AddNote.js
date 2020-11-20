@@ -46,6 +46,8 @@ const AddNote = (props) => {
                 'Content-Type': 'application/json',
                 "Authorization": "jwt " + token,
             },
+            mode: 'cors', 
+            credentials: 'include'
         })
         .then( res => {
             console.log(res)

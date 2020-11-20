@@ -14,7 +14,9 @@ const Home = (props) => {
         Axios.get(url, {
             headers: {
                 "Authorization": "jwt " + token
-            }
+            },
+            mode: 'cors', 
+            credentials: 'include'
         })
             .then(res => {
                 setMyNoteData(res.data)

@@ -8,7 +8,9 @@ const GetList = (props) =>{
     Axios.get(url, {
         headers: {
             "Authorization": "jwt " + token
-        }
+        },
+        mode: 'cors', 
+        credentials: 'include'
     })
         .then(res => {
             props.setMyNoteData(res.data)

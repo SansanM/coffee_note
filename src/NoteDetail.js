@@ -18,7 +18,9 @@ const NoteDetail = (props) => {
         Axios.get(url, {
             headers: {
                 "Authorization": "jwt " + token
-            }
+            },
+            mode: 'cors', 
+            credentials: 'include'
         })
             .then(res => {
                 props.setNote(res.data)
@@ -43,7 +45,9 @@ const NoteDetail = (props) => {
         Axios.delete(url, {
             headers: {
                 "Authorization": "jwt " + token
-            }
+            },
+            mode: 'cors', 
+            credentials: 'include'
         })
             .then(res => {
                 setOpen(false);
@@ -57,7 +61,9 @@ const NoteDetail = (props) => {
         Axios.get(url, {
             headers: {
                 "Authorization": "jwt " + token
-            }
+            },
+            mode: 'cors', 
+            credentials: 'include'
         })
             .then(res => {
                 setData(res.data[0])

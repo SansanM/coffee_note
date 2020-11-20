@@ -14,6 +14,8 @@ const IsLogin = (props) => {
             headers: {
                 'content-type': 'multipart/form-data'
             },
+            mode: 'cors', 
+            credentials: 'include'
         })
             .catch(error => {
                 alert('再度ログインを行なってください');
