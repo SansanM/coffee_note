@@ -67,6 +67,7 @@ const Auth = (props) => {
             <br />
             {ErrorMessage.password? ErrorMessage.password:null}
             <br />
+            {ErrorMessage.non_field_errors?　"IDまたはパスワードが間違っています":null}<br />
             <Button onClick={() => SubmitUserData()}>
                 {isLogin ? "ログイン" : "アカウントを作成する"}
             </Button><br />
