@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { withCookies } from 'react-cookie';
 import { Redirect,useLocation } from 'react-router-dom';
-
+import {apiBaseUrl} from "../config";
 
 const IsLogin = (props) => {
     const location = useLocation();
@@ -9,7 +9,7 @@ const IsLogin = (props) => {
         let form_data = new FormData();
         form_data.append('token', props.cookies.get('coffeeNote-token'));
         
-        const url = "https://coffeenoteapi.sankawa.site/api/token/verify/"
+        const url = `${apiBaseUrl}/api/token/verify/`;
         Axios.post(url, form_data, {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -19,7 +19,7 @@ const IsLogin = (props) => {
         })
             .catch(error => {
                 alert('再度ログインを行なってください');
-                props.cookies.remove('coffeeNote-token')
+                props.cookies.remove('coffeeNote-token');
                 window.location.href = "/Login";
             });
 
@@ -28,7 +28,7 @@ const IsLogin = (props) => {
     }
     else {
         if(location.pathname==="/Signup"){
-            return (props.children)
+            return (props.children);
         }
         else{
             return <Redirect to={"/Login"} />

@@ -1,19 +1,19 @@
-import Axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import Axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { withCookies } from 'react-cookie';
-import DateTimePrint from "./component/DateTimePrtint"
-
+import DateTimePrint from "./component/DateTimePrtint";
+import {apiBaseUrl} from "./config";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@material-ui/core';
 
 
 const NoteDetail = (props) => {
-    const uuid = props.uuid
-    const [data, setData] = useState([])
-    const url = "https://coffeenoteapi.sankawa.site/note/note/" + uuid
+    const uuid = props.uuid;
+    const [data, setData] = useState([]);
+    const url = `${apiBaseUrl}/note/note/${uuid}`;
     const token = props.cookies.get('coffeeNote-token');
 
     const getList = (props) => {
-        const url = "https://coffeenoteapi.sankawa.site/note/note/";
+        const url = `${apiBaseUrl}/note/note/`;
         const token = props.cookies.get('coffeeNote-token');
         Axios.get(url, {
             headers: {
@@ -23,11 +23,11 @@ const NoteDetail = (props) => {
             credentials: 'include'
         })
             .then(res => {
-                props.setNote(res.data)
-                console.log("success")
+                props.setNote(res.data);
+                console.log("success");
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.response.data);
             });
     }
 
@@ -51,7 +51,7 @@ const NoteDetail = (props) => {
         })
             .then(res => {
                 setOpen(false);
-                getList(props)
+                getList(props);
             })
             .catch(error => {
                 console.log(error.response.data)
@@ -66,10 +66,10 @@ const NoteDetail = (props) => {
             credentials: 'include'
         })
             .then(res => {
-                setData(res.data[0])
+                setData(res.data[0]);
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.response.data);
             });
     }, [])
 

@@ -1,9 +1,9 @@
-import Axios from 'axios'
+import Axios from 'axios';
 import React, { useState } from 'react';
 import { withCookies } from 'react-cookie';
 import { Link } from "react-router-dom";
 import { Button, TextField } from '@material-ui/core/';
-
+import {apiBaseUrl} from "./config";
 import Formstyle from "./css/AddNoteForm.module.css"
 import style from "./css/pageTitle.module.css"
 
@@ -32,7 +32,7 @@ const AddNote = (props) => {
     const NotePost = () =>{
 
         const token = props.cookies.get('coffeeNote-token');
-        const url = "https://coffeenoteapi.sankawa.site/note/note/";
+        const url = `${apiBaseUrl}/note/note/`;
 
         let form_data = new FormData();
         form_data.append('title', title);
