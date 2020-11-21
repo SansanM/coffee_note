@@ -1,15 +1,15 @@
-import Axios from 'axios'
+import Axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { withCookies } from 'react-cookie';
-import Notes from "./component/NotesComponent"
-
+import Notes from "./component/NotesComponent";
+import {apiBaseUrl} from "./config";
 
 const Home = (props) => {
     const [myNoteData, setMyNoteData] = useState([])
 
 
     useEffect(() => {
-        const url = "https://coffeenoteapi.sankawa.site/note/note/";
+        const url = `${apiBaseUrl}/note/note/`;
         const token = props.cookies.get('coffeeNote-token');
         Axios.get(url, {
             headers: {

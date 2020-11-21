@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { withCookies } from 'react-cookie';
 import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
-import classes from "./css/LoginForm.module.css"
-
+import classes from "./css/LoginForm.module.css";
+import {apiBaseUrl} from "./config";
 const Auth = (props) => {
     //Hooks
     const [userName, setUserName] = useState("");
@@ -16,7 +16,7 @@ const Auth = (props) => {
         setUserName("");
         setPassword("");
         setIsLogin(!isLogin);
-        setErrorMessage("")
+        setErrorMessage("");
     }
 
     const SubmitUserData = () => {
@@ -25,7 +25,7 @@ const Auth = (props) => {
         form_data.append('username', userName);
         form_data.append('password', password);
        
-        const url = isLogin?"https://coffeenoteapi.sankawa.site/api/token/":"https://coffeenoteapi.sankawa.site/note/users/"
+        const url = isLogin?`${apiBaseUrl}/api/token/`:`${apiBaseUrl}/note/users/`;
         axios.post(url, form_data, {
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ const Auth = (props) => {
         .catch( error => {
         setUserName("");
         setPassword("");
-        setErrorMessage(error.response.data)
+        setErrorMessage(error.response.data);
           
         });
     }
