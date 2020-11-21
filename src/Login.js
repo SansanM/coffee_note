@@ -53,20 +53,28 @@ const Auth = (props) => {
                 onChange={(e) => setUserName(e.target.value)} 
                 value = {userName}    
             />
-            {ErrorMessage.username? ErrorMessage.username:null}<br />
+            <br />
+            {ErrorMessage.username? ErrorMessage.username:null}
+            <br />
 
             パスワード
             <TextField 
                 onChange={(e) => setPassword(e.target.value)}
                 value = {password}
+                type="password"
+
             />
-            {ErrorMessage.password? ErrorMessage.password:null}<br />
+            <br />
+            {ErrorMessage.password? ErrorMessage.password:null}
+            <br />
             <Button onClick={() => SubmitUserData()}>
                 {isLogin ? "ログイン" : "アカウントを作成する"}
             </Button><br />
             <Button onClick={() => IsLoginChange()}>
                 {isLogin ? "アカウントの作成はこちら" : "ログインはこちら"}
             </Button>
+            {ErrorMessage.non_field_errors?　"IDまたはパスワードが間違っています":null}
+            
         </div>
     )
 }
