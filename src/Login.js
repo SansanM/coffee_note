@@ -70,10 +70,11 @@ const Auth = (props) => {
             <Button onClick={() => SubmitUserData()}>
                 {isLogin ? "ログイン" : "アカウントを作成する"}
             </Button><br />
+            {ErrorMessage.non_field_errors?　"IDまたはパスワードが間違っています":null}
             <Button onClick={() => IsLoginChange()}>
                 {isLogin ? "アカウントの作成はこちら" : "ログインはこちら"}
             </Button>
-            {ErrorMessage.non_field_errors?　"IDまたはパスワードが間違っています":null}
+            
             
         </div>
     )
