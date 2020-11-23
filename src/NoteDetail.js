@@ -140,9 +140,9 @@ const NoteDetail = (props) => {
                         苦味:{data.nigami}<br />
                         評価:{data.like}<br />
                         感想:{data.body}<br />
-                        <DateTimePrint data={data} /><br />
-                        作成者:{data.user?data.user.username:null}<br />
                         公開状況:{isPublic?"公開中":"未公開"}
+                        作成者:{data.user?data.user.username:null}<br />
+                        <DateTimePrint data={data} /><br />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
