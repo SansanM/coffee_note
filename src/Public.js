@@ -4,12 +4,12 @@ import { withCookies } from 'react-cookie';
 import Notes from "./component/NotesComponent";
 import {apiBaseUrl} from "./config";
 
-const Home = (props) => {
+const PublicHome = (props) => {
     const [myNoteData, setMyNoteData] = useState([])
 
 
     useEffect(() => {
-        const url = `${apiBaseUrl}/note/note/`;
+        const url = `${apiBaseUrl}/note/notePublic/`;
         const token = props.cookies.get('coffeeNote-token');
         Axios.get(url, {
             headers: {
@@ -22,16 +22,15 @@ const Home = (props) => {
                 setMyNoteData(res.data)
             })
             .catch(error => {
-                console.log(error.response)
+                console.log(error.response.data)
             });
     }, [])
 
     return (
         <div>
-            <Notes notesData={myNoteData} isPublicPage={false} setNote={setMyNoteData}
-            />
+            <Notes notesData={myNoteData} isPublicPage={true} setNote={setMyNoteData}/>
         </div>
     )
 }
 
-export default withCookies(Home);
+export default withCookies(PublicHome);

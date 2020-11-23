@@ -51,11 +51,14 @@ const PrintNoteData = (props) => {
                         評価:{props.noteData.like}
                         <br />
                         感想:{props.noteData.body}
+                        <br /><br />
+                        ユーザ:{props.noteData.user.username}
                     </Typography>
                 </CardContent>
                 <CardActions>
                     <NoteDetail uuid={props.noteData.uuid} setNote={props.setNote}/>
                 </CardActions>
+                
             </Card>
         </React.Fragment>
     )

@@ -74,7 +74,6 @@ const Auth = (props) => {
             <Button onClick={() => IsLoginChange()}>
                 {isLogin ? "アカウントの作成はこちら" : "ログインはこちら"}
             </Button>
-            {ErrorMessage.non_field_errors?　"IDまたはパスワードが間違っています":null}
             
         </div>
     )
