@@ -6,6 +6,7 @@ import { CookiesProvider } from 'react-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./Home";
+import Public from "./Public"
 import Login from "./Login";
 import AddNote from "./AddNote";
 import IsLogin from "./component/isLogin";
@@ -17,6 +18,7 @@ const LoginOnly = (props) =>{
       <Route path="/AddNote" render={() => <AddNote />}/>
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/Home" render={() => <Home />} />
+      <Route exact path="/Public" render={() => <Public />} />
     </React.Fragment>
   )
 } 

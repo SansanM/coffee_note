@@ -9,7 +9,10 @@ const Login_component = (props) => {
     }
     if (props.cookies.get('coffeeNote-token')) {
         return (
-            <Nav.Link href="/Logout" onClick={Logout}>Logout</Nav.Link>
+            <React.Fragment>
+                <Nav.Link href="/Logout" onClick={Logout}>Logout</Nav.Link>
+                <Nav.Link href="/Public" >みんなのNote</Nav.Link>
+            </React.Fragment>
         )
     }
     else {
@@ -17,6 +20,7 @@ const Login_component = (props) => {
             <React.Fragment>
                 <Nav.Link href="/Login" >Login</Nav.Link>
                 <Nav.Link href="/Signup" >新規登録</Nav.Link>
+                
             </React.Fragment>
         )
     }

@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React, { useState } from 'react';
 import { withCookies } from 'react-cookie';
 import { Link } from "react-router-dom";
-import { Button, TextField } from '@material-ui/core/';
+import { Button, TextField ,Switch ,FormGroup , FormControlLabel} from '@material-ui/core/';
 import {apiBaseUrl} from "./config";
 import Formstyle from "./css/AddNoteForm.module.css"
 import style from "./css/pageTitle.module.css"
@@ -24,6 +24,7 @@ const AddNote = (props) => {
     const [note, setNote] = useState("");
     const [sanmi, setSanmi] = useState(3);
     const [nigami, setNigami] = useState(3);
+    const [isPublic, setIsPublic] = useState(false);
     const [like, setLike] = useState(3);
     const classes = useStyles();
 
@@ -40,7 +41,12 @@ const AddNote = (props) => {
         form_data.append('sanmi', sanmi);
         form_data.append('nigami', nigami);
         form_data.append('like', like);
-
+        if(isPublic){
+            form_data.append('public',"true")
+        }
+        else{
+            form_data.append('public',"false");
+        }
         Axios.post(url,form_data, {
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +87,7 @@ const AddNote = (props) => {
                     label="酸味"
                     variant="outlined"
                 /><br />
-                 <TextField
+                <TextField
                     onChange={(e) => setNigami(e.target.value)}
                     value={nigami}
                     type="number"
@@ -89,7 +95,7 @@ const AddNote = (props) => {
                     label="苦味"
                     variant="outlined"
                 /><br />
-                 <TextField
+                <TextField
                     onChange={(e) => setLike(e.target.value)}
                     value={like}
                     type="number"
@@ -97,12 +103,22 @@ const AddNote = (props) => {
                     label="評価"
                     variant="outlined"
                 /><br />
-                 <TextField
+                <TextField
                     onChange={(e) => setNote(e.target.value)}
                     value={note}
                     label="メモ"
                     variant="outlined"
                 /><br />
+            
+                <FormControlLabel
+                    control={ <Switch
+                        onChange={(e) => setIsPublic(e.target.checked)}
+                        value={isPublic}   
+                    />}
+                    label="公開する"
+                />
+                
+               <br />
                 <Button onClick ={NotePost}>
                     投稿する
                 </Button>

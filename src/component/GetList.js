@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import { withCookies } from 'react-cookie';
 import {apiBaseUrl} from "../config";
 
 const GetList = (props) =>{
+    console.log(props)
     const url = `${apiBaseUrl}/note/note/`;
     const token = props.cookies.get('coffeeNote-token');
     Axios.get(url, {
@@ -13,10 +13,10 @@ const GetList = (props) =>{
         credentials: 'include'
     })
         .then(res => {
-            props.setMyNoteData(res.data);
+            props.setNote(res.data);
         })
         .catch(error => {
             console.log(error.response.data);
         });
 }
-export default withCookies(GetList)
+export default GetList
