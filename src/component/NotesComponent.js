@@ -6,6 +6,7 @@ import style from "../css/pageTitle.module.css"
 
 import PrintNoteData from "./PrintNoteData"
 
+//Notesを取り出し繰り返し処理で描画
 const NotesComponent = (props) => {
     return (
         <div>
@@ -21,7 +22,7 @@ const NotesComponent = (props) => {
             {props.notesData.map(
                 (data) => {
                     return (
-                        <PrintNoteData noteData={data} key={data.uuid} setNote={props.setNote}/>
+                        <PrintNoteData noteData={data} key={data.uuid} setNote={props.setNote} isPublicPage={props.isPublicPage}/>
                     )
                 }
             )}

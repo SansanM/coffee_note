@@ -11,14 +11,16 @@ const Auth = (props) => {
     const [isLogin, setIsLogin] = useState(props.isLogin);
     const [ErrorMessage, setErrorMessage] = useState("");
 
-    //コンポーネント
+    //ログインと新規登録の切り替え
     const IsLoginChange = () => {
+        //入力された値の削除
         setUserName("");
         setPassword("");
-        setIsLogin(!isLogin);
         setErrorMessage("");
+        //切り替え処理
+        setIsLogin(!isLogin);       
     }
-
+    //送信処理
     const SubmitUserData = () => {
         let form_data = new FormData();
 

@@ -4,6 +4,8 @@ import { withCookies } from 'react-cookie';
 import Notes from "./component/NotesComponent";
 import {apiBaseUrl} from "./config";
 
+
+//みんなのNoteの全体ページ
 const PublicHome = (props) => {
     const [myNoteData, setMyNoteData] = useState([])
 

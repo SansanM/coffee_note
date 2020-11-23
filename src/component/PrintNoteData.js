@@ -27,13 +27,12 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
 });
-
+//Noteデータの描画処理を行う
 const PrintNoteData = (props) => {
     const year = props.noteData.updated_at.substring(0, 4);
     const month = props.noteData.updated_at.substring(5, 7);
     const day = props.noteData.updated_at.substring(8, 10);
     
-    //<Link to={"/NoteDetail/"+String(props.noteData.uuid)}>詳しく見る</Link>
 
 
     const classes = useStyles();
@@ -56,7 +55,7 @@ const PrintNoteData = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <NoteDetail uuid={props.noteData.uuid} setNote={props.setNote}/>
+                    <NoteDetail noteData={props.noteData} setNote={props.setNote} isPublicPage={props.isPublicPage}/>
                 </CardActions>
                 
             </Card>
