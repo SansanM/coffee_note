@@ -61,7 +61,7 @@ const AddNote = (props) => {
         })
         .catch( e =>{console.log(e)})
     } 
-
+    //入力フォーム
     return (
         <div>
             <div className={style.titlearea}>
@@ -83,7 +83,7 @@ const AddNote = (props) => {
                     onChange={(e) => setSanmi(e.target.value)}
                     value={sanmi}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="酸味"
                     variant="outlined"
                 /><br />
@@ -91,7 +91,7 @@ const AddNote = (props) => {
                     onChange={(e) => setNigami(e.target.value)}
                     value={nigami}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="苦味"
                     variant="outlined"
                 /><br />
@@ -99,13 +99,14 @@ const AddNote = (props) => {
                     onChange={(e) => setLike(e.target.value)}
                     value={like}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="評価"
                     variant="outlined"
                 /><br />
                 <TextField
                     onChange={(e) => setNote(e.target.value)}
                     value={note}
+                    multiline
                     label="メモ"
                     variant="outlined"
                 /><br />
