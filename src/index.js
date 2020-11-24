@@ -1,7 +1,7 @@
 import Layout from "./Layout";
 import React from 'react';
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,28 +12,33 @@ import AddNote from "./AddNote";
 import IsLogin from "./component/isLogin";
 import IsLogout from "./component/isLogout";
 
-const LoginOnly = (props) =>{
+const LoginOnly = () =>{
   return(
     <React.Fragment>
-      <Route path="/AddNote" render={() => <AddNote />}/>
-      <Route exact path="/" render={() => <Home />} />
-      <Route exact path="/Home" render={() => <Home />} />
-      <Route exact path="/Public" render={() => <Public />} />
+      <Switch>
+        <Route exact path="/AddNoteMyNote" render={() => <AddNote isPublic={false}/>}/>
+        <Route exact path="/AddNotePublic" render={() => <AddNote isPublic={true}/>}/>
+        <Route exact path="/Home" render={() => <Home />} />
+        <Route exact path="/Public" render={() => <Public />} />
+        <Route path="/" render={() => <Home />} />
+      </Switch>
     </React.Fragment>
   )
 } 
-const LogoutOnly = (props) =>{
+const LogoutOnly = () =>{
   return(
     <React.Fragment>
-      <Route path="/Login" render={() => <Login isLogin={true} />} />
-      <Route path="/Signup" render={() => <Login isLogin={false} />} />
+      <Switch>
+        <Route exact path="/Login" render={() => <Login isLogin={true} />} />
+        <Route exact path="/Signup" render={() => <Login isLogin={false} />} />
+        <Route path="/" render={() => <Login isLogin={true} />} />
+      </Switch>
     </React.Fragment>
   )
 } 
-const RoutingComponent = (props) => {
+const RoutingComponent = () => {
   return (
     <React.Fragment>
-      
       <IsLogin>
         <LoginOnly />
       </IsLogin>
@@ -44,8 +49,7 @@ const RoutingComponent = (props) => {
   )
 }
 
-export default function APP(props) {
-
+export default function APP() {
   return (
     <Layout title="CoffeeNote">
       <Router basename={process.env.PUBLIC_URL}>

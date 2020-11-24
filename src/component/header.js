@@ -1,11 +1,13 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import LoginComponent from "./LoginComponent";
+import LoginComponent from "./HeaderLoginComponent";
 import { withCookies } from 'react-cookie';
 
+//ヘッダー要素の描画
 const myHeader = (props) => {
+    document.title = props.title;
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
             <Navbar.Brand href="/">
                 Coffee Note
             </Navbar.Brand>

@@ -11,9 +11,8 @@ const Layout = (props) => {
         <div className={classes.page}>
             <title>{title ? `${title} | ${siteTitle}` : siteTitle}l
                 <link rel="icon" href="/favicon.ico" /></title>
-
             <header>
-                <HeaderComponrts />
+                <HeaderComponrts title={props.title}/>
             </header>
             <br/>
 

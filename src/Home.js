@@ -24,7 +24,7 @@ const Home = (props) => {
             .catch(error => {
                 console.log(error.response)
             });
-    }, [])
+    }, [props.cookies])
 
     return (
         <div>
