@@ -28,6 +28,7 @@ const AddNote = (props) => {
     const [like, setLike] = useState(3);
     const classes = useStyles();
 
+    const [ErrorMessage, setErrorMessage] = useState("");
 
     //投稿の非同期通信の処理
     const NotePost = () =>{
@@ -59,7 +60,10 @@ const AddNote = (props) => {
             console.log(res)
             window.location.href = "/";
         })
-        .catch( e =>{console.log(e)})
+        .catch( error =>{
+            console.log(error.response.data);
+            setErrorMessage(error.response.data);
+        })
     } 
 
     return (
@@ -78,42 +82,47 @@ const AddNote = (props) => {
                     value={title}
                     label="タイトル"
                     variant="outlined"
+                    helperText={ErrorMessage.title}
                 /><br />
                 <TextField
                     onChange={(e) => setSanmi(e.target.value)}
                     value={sanmi}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="酸味"
                     variant="outlined"
+                    helperText={ErrorMessage.sanmi}
                 /><br />
                 <TextField
                     onChange={(e) => setNigami(e.target.value)}
                     value={nigami}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="苦味"
                     variant="outlined"
+                    helperText={ErrorMessage.nigami}
                 /><br />
                 <TextField
                     onChange={(e) => setLike(e.target.value)}
                     value={like}
                     type="number"
-                    inputProps={{min: 0 , max:5}} 
+                    inputProps={{min: 1 , max:5}} 
                     label="評価"
                     variant="outlined"
+                    helperText={ErrorMessage.like}
                 /><br />
                 <TextField
                     onChange={(e) => setNote(e.target.value)}
                     value={note}
                     label="メモ"
                     variant="outlined"
+                    helperText={ErrorMessage.note}
                 /><br />
             
                 <FormControlLabel
                     control={ <Switch
                         onChange={(e) => setIsPublic(e.target.checked)}
-                        value={isPublic}   
+                        value={isPublic}
                     />}
                     label="公開する"
                 />
