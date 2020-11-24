@@ -1,6 +1,7 @@
 import React from 'react'
 import { withCookies } from 'react-cookie';
 
+//日時の表示関数（非同期通信が終わるまで空データを返す）
 const DateTimePrint = (props) => {
     if(props.data.updated_at){
         const year = props.data.updated_at.substring(0, 4);

@@ -7,9 +7,9 @@ import {apiBaseUrl} from "./config";
 
 //みんなのNoteの全体ページ
 const PublicHome = (props) => {
-    const [myNoteData, setMyNoteData] = useState([])
+    const [myNoteData, setMyNoteData] = useState([]);
 
-
+    //みんなのNoteのデータを取得
     useEffect(() => {
         const url = `${apiBaseUrl}/note/notePublic/`;
         const token = props.cookies.get('coffeeNote-token');
@@ -21,12 +21,12 @@ const PublicHome = (props) => {
             credentials: 'include'
         })
             .then(res => {
-                setMyNoteData(res.data)
+                setMyNoteData(res.data);
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.response.data);
             });
-    }, [])
+    }, [props.cookies])
 
     return (
         <div>

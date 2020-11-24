@@ -8,6 +8,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, B
 //詳細ダイアログ内部の動作　公開状況の変更　削除ができる
 const NoteDetail = (props) => {
     let url ="";
+    //みんなのNoteだとuuidが返却されない
     if(props.noteData.uuid){
         url = `${apiBaseUrl}/note/note/${props.noteData.uuid}`;
     }
@@ -68,7 +69,7 @@ const NoteDetail = (props) => {
         form_data.append('nigami', data.nigami);
         form_data.append('like', data.like);
         form_data.append('user', data.user.username);
-        console.log(data.user.username)
+        console.log(data.user.username);
         if(isPublic){
             form_data.append('public',"false")
         }
@@ -90,7 +91,7 @@ const NoteDetail = (props) => {
                 setOpen(false);
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.response.data);
             });
     }
     const handleDelete = () => {
@@ -106,7 +107,7 @@ const NoteDetail = (props) => {
                 getList(props);
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error.response.data);
             });
     }
     //自分のNoteに対して行える操作

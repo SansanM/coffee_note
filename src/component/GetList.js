@@ -2,7 +2,6 @@ import Axios from 'axios';
 import {apiBaseUrl} from "../config";
 
 const GetList = (props) =>{
-    console.log(props)
     const url = `${apiBaseUrl}/note/note/`;
     const token = props.cookies.get('coffeeNote-token');
     Axios.get(url, {

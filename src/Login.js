@@ -40,10 +40,9 @@ const Auth = (props) => {
             window.location.href = "/";
         })
         .catch( error => {
-        setUserName("");
-        setPassword("");
-        setErrorMessage(error.response.data);
-          
+            setUserName("");
+            setPassword("");
+            setErrorMessage(error.response.data);
         });
     }
 

@@ -1,12 +1,10 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
 import { withCookies } from 'react-cookie';
-import { Link } from "react-router-dom";
-import { Button, TextField ,Switch ,FormGroup , FormControlLabel} from '@material-ui/core/';
+import { Button, TextField ,Switch , FormControlLabel} from '@material-ui/core/';
 import {apiBaseUrl} from "./config";
 import Formstyle from "./css/AddNoteForm.module.css"
-import style from "./css/pageTitle.module.css"
-
+import MainContentsHead from "./component/mainContentsHead";
 import { makeStyles } from '@material-ui/core/styles';
 
 //フォーム同士の隙間の設定
@@ -20,14 +18,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 //新規noteの投稿
 const AddNote = (props) => {
+    console.log(props.isPublic)
     const [title, setTitle] = useState("");
     const [note, setNote] = useState("");
     const [sanmi, setSanmi] = useState(3);
     const [nigami, setNigami] = useState(3);
-    const [isPublic, setIsPublic] = useState(false);
+    //遷移元のページによってデフォルトが変わる
+    //MyNoteからはfalse　みんなのNoteからはtrueがデフォルト
+    const [isPublic, setIsPublic] = useState(props.isPublic);
     const [like, setLike] = useState(3);
     const classes = useStyles();
-
+    
+    const [ErrorMessage, setErrorMessage] = useState("");
 
     //投稿の非同期通信の処理
     const NotePost = () =>{
@@ -57,27 +59,29 @@ const AddNote = (props) => {
         })
         .then( res => {
             console.log(res)
-            window.location.href = "/";
+            if(props.isPublic){
+                window.location.href = "/Public";
+            }
+            else{
+                window.location.href = "/";
+            }
         })
-        .catch( e =>{console.log(e)})
+        .catch( error =>{
+            console.log(error.response.data);
+            setErrorMessage(error.response.data);
+        })
     } 
     //入力フォーム
     return (
         <div>
-            <div className={style.titlearea}>
-                <h2 className={style.title}>Add Note</h2>
-                <Link className={style.newNote} to={"/home"}>
-                    <Button>
-                        My Note
-                    </Button>
-                </Link>
-            </div>
+            <MainContentsHead pageTitle="Add Note" toUrl={props.isPublic?"/Public":"/"} buttonName={props.isPublic?"みんなのNote":"My Note"}/>
             <div className={Formstyle.root +" "+ classes.root}>
                 <TextField
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     label="タイトル"
                     variant="outlined"
+                    helperText={ErrorMessage.title}
                 /><br />
                 <TextField
                     onChange={(e) => setSanmi(e.target.value)}
@@ -86,6 +90,7 @@ const AddNote = (props) => {
                     inputProps={{min: 1 , max:5}} 
                     label="酸味"
                     variant="outlined"
+                    helperText={ErrorMessage.sanmi}
                 /><br />
                 <TextField
                     onChange={(e) => setNigami(e.target.value)}
@@ -94,6 +99,7 @@ const AddNote = (props) => {
                     inputProps={{min: 1 , max:5}} 
                     label="苦味"
                     variant="outlined"
+                    helperText={ErrorMessage.nigami}
                 /><br />
                 <TextField
                     onChange={(e) => setLike(e.target.value)}
@@ -102,6 +108,7 @@ const AddNote = (props) => {
                     inputProps={{min: 1 , max:5}} 
                     label="評価"
                     variant="outlined"
+                    helperText={ErrorMessage.like}
                 /><br />
                 <TextField
                     onChange={(e) => setNote(e.target.value)}
@@ -109,12 +116,13 @@ const AddNote = (props) => {
                     multiline
                     label="メモ"
                     variant="outlined"
+                    helperText={ErrorMessage.note}
                 /><br />
             
                 <FormControlLabel
                     control={ <Switch
                         onChange={(e) => setIsPublic(e.target.checked)}
-                        value={isPublic}   
+                        checked={isPublic}
                     />}
                     label="公開する"
                 />

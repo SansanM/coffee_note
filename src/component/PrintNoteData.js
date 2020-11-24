@@ -27,6 +27,7 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
 });
+
 //Noteデータの描画処理を行う
 const PrintNoteData = (props) => {
     const year = props.noteData.updated_at.substring(0, 4);
